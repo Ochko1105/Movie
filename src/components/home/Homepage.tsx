@@ -12,6 +12,7 @@ import { getMoviesList } from "../../../utilis/get-data";
 import { movieResponseType } from "../../../type";
 
 const upcomingMovies: movieResponseType = await getMoviesList("now_playing");
+console.log("upcoming", upcomingMovies);
 
 const Homepage = () => {
   return (

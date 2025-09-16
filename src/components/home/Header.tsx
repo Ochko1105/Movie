@@ -1,6 +1,6 @@
 import { ModeToggle } from "./Theme";
 import { Genrepage } from "./Genre";
-import { SearchInput } from "@/components/ui/input";
+import { Input } from "@/components/ui/input";
 import { IoIosSearch } from "react-icons/io";
 
 import Link from "next/link";
@@ -18,11 +18,14 @@ export async function Header() {
         <Genrepage></Genrepage>
         <div className="flex items-center gap-2 h-[36px] w-[355px] border rounded-md">
           <IoIosSearch className="ml-2" />
-          <SearchInput
-            type="search"
-            placeholder="Search ..."
-            className="w-[379px] h-[36px] border-0"
-          />
+          <Link href={`/Searchbyid`}>
+            {" "}
+            <Input
+              type="search"
+              placeholder="Search ..."
+              className="w-[379px] h-[36px] border-0"
+            />
+          </Link>
         </div>
       </div>
       <ModeToggle></ModeToggle>

@@ -9,32 +9,25 @@ import {
 import { Moviecard } from "@/components/home/Moviecard";
 import { Moviedescribecard } from "@/components/home/Moviedescribe";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+
 type MovieidPageProps = {
   searchParams: Promise<{ id: string }>;
 };
 const Movieid = async ({ searchParams }: MovieidPageProps) => {
   const params = await searchParams;
   const id = params.id;
+  console.log("endehid", id);
   const Moviebyid: MovieType = await Getmoviesdescribtion(id);
   const Moviedirectorname: Directorname = await GetmoviesDirectorsname(id);
   const MorelikeThis: movieResponseType = await GetmoviesMorelikethis(id);
-  const Movietrailer: MovieType = await GetmoviesTrailer(id);
-  console.log("movieid", Moviebyid);
-  console.log("Director name ", Moviedirectorname);
-  console.log("Morelikethis", MorelikeThis);
+  const Movietrailer: movieResponseType = await GetmoviesTrailer(id);
+
   console.log("Movietrailer", Movietrailer);
+
+  console.log("Morelikethis", MorelikeThis);
 
   return (
     <div>
-      {/* {Moviebyid.results.map((movie: MovieType) => (
-        <Moviecard
-          id={movie.id}
-          title={movie.title}
-          Score={movie.vote_average}
-          Image={movie.poster_path}
-        ></Moviecard>
-      ))} */}
       <Moviedescribecard
         title={Moviebyid.title}
         Score={Moviebyid.vote_average}
@@ -47,16 +40,21 @@ const Movieid = async ({ searchParams }: MovieidPageProps) => {
         overview={Moviebyid.overview}
         crew={Moviedirectorname.crew}
         cast={Moviedirectorname.cast}
+        vote_count={Moviebyid.vote_count}
+        Movietrailer={Movietrailer.results[3].key}
+        type={Movietrailer.results[0].name}
       ></Moviedescribecard>
+
       <div className="flex justify-between mt-10 ml-42 w-[1200px]">
         {" "}
         <div className="text-4xl font-bold">More like this</div>{" "}
         <Button>See more</Button>
       </div>
-      <div className="flex  gap-4 ml-42 mt-10">
+      <div className="flex  gap-6 ml-42 mt-10 flex-wrap w-[1280px]">
         {" "}
         {MorelikeThis.results.slice(0, 5).map((movie) => (
           <Moviecard
+            key={movie.id}
             title={movie.title}
             Score={movie.vote_average}
             Image={movie.poster_path}

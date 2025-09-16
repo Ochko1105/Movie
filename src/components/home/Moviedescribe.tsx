@@ -1,17 +1,10 @@
-import Image from "next/image";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { FaStar } from "react-icons/fa";
-import Link from "next/link";
-import { Button } from "../ui/button";
 
+import { Youtubedialog } from "./Youtubedialog";
+type Crewtype = {
+  name: string;
+  job: string;
+};
 type MovieCardProps = {
   title: string;
   Score: number;
@@ -22,15 +15,18 @@ type MovieCardProps = {
   backdrop_path: string;
   genres: string[];
   overview: string;
-  crew: string[];
-  cast: string[];
+  crew: string;
+  cast: string;
+  vote_count: number;
+  Movietrailer: any;
+  type: string;
 };
 
 export const Moviedescribecard = ({
   title,
   Score,
   Image,
-  id,
+
   releasedate,
   runtime,
   backdrop_path,
@@ -38,24 +34,32 @@ export const Moviedescribecard = ({
   overview,
   crew,
   cast,
+  vote_count,
+  Movietrailer,
+
+  type,
 }: MovieCardProps) => {
   return (
     <div className="w-[1068px] h-fit ml-42">
       {" "}
       <div className="flex  justify-between w-[1068px]">
         <div>
-          <div>{title}</div>
+          <div className="text-[36px] font-bold">{title}</div>
           <div>
-            {releasedate} PG {runtime}
+            {releasedate} PG {runtime} min
           </div>
         </div>
 
         <div>
           {" "}
-          <div>Rating</div>
-          <div className="flex">
-            <FaStar color="yellow"></FaStar>
-            {Score}/10
+          <div className="text-[12px]">Rating</div>
+          <div className="flex gap-2 items-center">
+            <FaStar color="#FDE047" className="text-2xl"></FaStar>
+            <div>
+              {" "}
+              <div className="flex text-xl">{Score}/10</div>
+              <div>{vote_count}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -63,14 +67,23 @@ export const Moviedescribecard = ({
         <img
           src={`https://image.tmdb.org/t/p/w500/${Image}`}
           alt=""
-          className="w-[290px] h-[428px] object-cover"
+          className=" object-cover"
+          height={450}
+          width={290}
         />
-        <img
+        {/* <img
           className=" "
           src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
           height={428}
-          width={760}
-        ></img>
+          width={880}
+        ></img> */}
+        <div>
+          <Youtubedialog
+            image={backdrop_path}
+            Movietrailer={Movietrailer}
+            title={type}
+          ></Youtubedialog>
+        </div>
       </div>
       <div className="flex gap-4 mt-10">
         {genres.map((genre) => (
@@ -93,12 +106,13 @@ export const Moviedescribecard = ({
         </div>
         <div className="flex  items-center gap-10">
           <div> Writers</div>
-          <div className="text-[16px] font-normal">
-            {crew.map((crew) => {
+          <div className="text-[16px] font-normal flex gap-4">
+            {crew.slice(0, 3).map((crew) => {
               if (
                 crew.job === "Story" ||
                 crew.job === "Novel" ||
-                crew.job === "Original Story"
+                crew.job === "Original Story" ||
+                crew.job === "Producer"
               ) {
                 return <div>{crew.name}</div>;
               }

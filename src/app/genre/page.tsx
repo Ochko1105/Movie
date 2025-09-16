@@ -9,18 +9,21 @@ import { Button } from "@/components/ui/button";
 import { Getmoviesdescribtion } from "../../../utilis/get-data";
 
 type GenrePageProps = {
-  searchParams: Promise<{ id: string }>;
+  searchParams: Promise<{ id: string; name: string }>;
 };
 
 const Genre = async ({ searchParams }: GenrePageProps) => {
   const params = await searchParams;
   const id = params.id;
+  const name = params.name;
 
   const filteredMoviesResponse: movieResponseType = await getMoviesbygenreid(
-    id
+    id,
+    "2"
   );
 
   const Genremoviesresponse = await getGenremovies();
+  console.log("gener", Genremoviesresponse);
 
   return (
     <div>
@@ -30,7 +33,7 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
         </div>
         <div className="text-4xl font-bold ml-30 mt-20 mb-10">
           {" "}
-          {filteredMoviesResponse.results.length} titles in {}
+          {filteredMoviesResponse.results.length} titles in {name}
         </div>
         <div></div>
       </div>
@@ -46,7 +49,10 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
           </div>
           {Genremoviesresponse.genres.map(
             (genre: { id: string; name: string }) => (
-              <Link key={genre.id} href={`/genre?id=${genre.id}`}>
+              <Link
+                key={genre.id}
+                href={`/genre?id=${genre.id}&name=${genre.name}&page=${1}`}
+              >
                 <div className="border border-white rounded-md   ">
                   <Button className="flex items-center gap-2 ">
                     <span className="text-[12px] font-semibold ">

@@ -13,6 +13,7 @@ import { FaStar } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { MdOutlinePlayArrow } from "react-icons/md";
 import { MovieType } from "../../../type";
+import Link from "next/link";
 
 type MovieCarouselProps = {
   movies: MovieType[];
@@ -41,33 +42,36 @@ export const Corosel = ({ movies }: MovieCarouselProps) => {
       <CarouselContent className="m-auto">
         {movies.slice(0, 5).map((movie, image) => {
           return (
-            <CarouselItem
-              key={movie.id}
-              className="text-white w-[1440px] h-[600px] relative"
-            >
-              <img
-                className="absolute inset-0"
-                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                height={600}
-                width={1440}
-              ></img>
-              <div className="pt-[178px] pl-[140px] absolute ">
-                <p>Now Playing :</p>
-                <p className="text-[36px] font-bold">{movie.title}</p>
-                <p className="flex gap-2 items-center text-[18px] pt-[10px]">
-                  <FaStar className="h-[28px] w-[28px]" color="#FDE047" />
-                  {movie.vote_average}
-                  <span className="text-[16px] color-[#71717A]">/10</span>
-                </p>
-                <p className="w-[500px] text-[12px] font-normal pt-[26px]">
-                  {movie.overview}
-                </p>
-                <Button className="bg-white text-black mt-4">
-                  <MdOutlinePlayArrow />
-                  Watch Trailer
-                </Button>
-              </div>
-            </CarouselItem>
+            <Link key={movie.id} href={`/moviebyid/?id=${movie.id}`}>
+              <CarouselItem
+                key={movie.id}
+                className="text-white w-[1440px] h-[600px] relative"
+              >
+                <img
+                  className="absolute inset-0"
+                  src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                  height={600}
+                  width={1440}
+                ></img>
+                <div className="pt-[178px] pl-[140px] absolute ">
+                  <p>Now Playing :</p>
+                  <p className="text-[36px] font-bold">{movie.title}</p>
+                  <p className="flex gap-2 items-center text-[18px] pt-[10px]">
+                    <FaStar className="h-[28px] w-[28px]" color="#FDE047" />
+                    {movie.vote_average}
+                    <span className="text-[16px] color-[#71717A]">/10</span>
+                  </p>
+                  <p className="w-[500px] text-[12px] font-normal pt-[26px]">
+                    {movie.overview}
+                  </p>
+
+                  <Button className="bg-white text-black mt-4">
+                    <MdOutlinePlayArrow />
+                    Watch Trailer
+                  </Button>
+                </div>
+              </CarouselItem>
+            </Link>
           );
         })}
 

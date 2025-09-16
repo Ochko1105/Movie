@@ -21,7 +21,7 @@ type MovieCardProps = {
 export const Moviecard = ({ title, Score, Image, id }: MovieCardProps) => {
   return (
     <div>
-      <Link href={`/moviebyid?id=${id}`}>
+      <Link href={`/moviebyid/?id=${id}`}>
         <Card className="h-[440px] w-[230px] bg-secondary p-0 overflow-hidden gap-2 px-0">
           <CardContent className="w-[230px] h-[340px] px-0">
             <img

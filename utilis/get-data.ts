@@ -26,9 +26,9 @@ export const getGenremovies = async () => {
   const data = await res.json();
   return data;
 };
-export const getMoviesbygenreid = async (genreIds: string) => {
+export const getMoviesbygenreid = async (genreIds: string, page: string) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?language=en&with_genres=${genreIds}&page=${1}`,
+    `https://api.themoviedb.org/3/discover/movie?language=en&with_genres=${genreIds}&page=${page}`,
     {
       method: "GET",
       headers: {

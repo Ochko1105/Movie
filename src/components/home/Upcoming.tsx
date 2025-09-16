@@ -19,7 +19,7 @@ export default async function Upcoming({ slice1, slice2 }: Slicecount) {
     <div>
       <div className="flex justify-between pl-30 pt-10">
         <div className="text-[24px] font-semibold">Upcoming</div>
-        <Link href="/genre">
+        <Link href="/Upcoming">
           {" "}
           <Button className="bg-white text-black ">
             See more{" "}
