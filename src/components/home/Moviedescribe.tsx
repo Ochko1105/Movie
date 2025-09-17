@@ -5,6 +5,9 @@ type Crewtype = {
   name: string;
   job: string;
 };
+type Genre={
+  name:string
+}
 type MovieCardProps = {
   title: string;
   Score: number;
@@ -13,10 +16,10 @@ type MovieCardProps = {
   releasedate: string;
   runtime: number;
   backdrop_path: string;
-  genres: string[];
+  genres: Genre[];
   overview: string;
-  crew: Crewtype;
-  cast: Crewtype;
+  crew: Crewtype[];
+  cast: Crewtype[];
   vote_count: number;
   Movietrailer: any;
   type: string;
@@ -79,8 +82,8 @@ export const Moviedescribecard = ({
         </div>
       </div>
       <div className="flex gap-4 mt-10">
-        {genres.map((genre) => (
-          <div className="border w-[100px] rounded-md border-white text-center">
+        {genres.map((genre,index) => (
+          <div key={index} className="border w-[100px] rounded-md border-white text-center">
             {genre.name}
           </div>
         ))}
@@ -90,9 +93,9 @@ export const Moviedescribecard = ({
         <div className="flex  items-center gap-10">
           <div> Director</div>
           <div className="text-[16px] font-normal">
-            {crew.map((crew) => {
+            {crew.map((crew,index) => {
               if (crew.job === "Director") {
-                return <div>{crew.name}</div>;
+                return <div key={index}>{crew.name}</div>;
               }
             })}
           </div>
@@ -100,14 +103,14 @@ export const Moviedescribecard = ({
         <div className="flex  items-center gap-10">
           <div> Writers</div>
           <div className="text-[16px] font-normal flex gap-4">
-            {crew.slice(0, 3).map((crew: { job: string; name: string }) => {
+            {crew.slice(0, 3).map((crew: { job: string; name: string },index) => {
               if (
                 crew.job === "Story" ||
                 crew.job === "Novel" ||
                 crew.job === "Original Story" ||
                 crew.job === "Producer"
               ) {
-                return <div>{crew.name}</div>;
+                return <div key={index}>{crew.name}</div>;
               }
             })}
           </div>
@@ -115,8 +118,8 @@ export const Moviedescribecard = ({
         <div className="flex  items-center gap-10">
           <div> Stars</div>
           <div className="text-[16px] font-normal flex  gap-4">
-            {cast.slice(0, 3).map((cast) => {
-              return <div>{cast.name}</div>;
+            {cast.slice(0, 3).map((cast,index) => {
+              return <div key={index}>{cast.name}</div>;
             })}
           </div>
         </div>

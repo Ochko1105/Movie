@@ -12,13 +12,14 @@ export type MovieType = {
   title: string;
   vote_average: number;
   runtime: number;
-  genres: string[];
-  crew: string[];
+  genres: CrewType[];
+
   vote_count: number;
   src: string;
   type: string;
   key: string;
   name: string;
+  
 };
 
 export type movieResponseType = {
@@ -37,7 +38,7 @@ export type CrewType = {
 };
 
 export type Directorname = {
-  cast: CrewType;
+  cast: CrewType[];
 
-  crew: CrewType;
+  crew: CrewType[];
 };

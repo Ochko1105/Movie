@@ -1,40 +1,4 @@
-// import {
-//   Dialog,
-//   DialogContent,
-//   DialogDescription,
-//   DialogHeader,
-//   DialogTitle,
-//   DialogTrigger,
-// } from "@/components/ui/dialog";
-// type Youtubeprops = {
-//   Movietrailer: any;
-//   title: string;
-// };
 
-// export const Youtubedialog = ({ Movietrailer, title }: Youtubeprops) => {
-//   return (
-//     <div>
-//       <Dialog>
-//         <DialogContent>
-//           <div>
-//             {" "}
-//             <iframe
-//               width={560}
-//               height={360}
-//               src={`https://www.youtube-nocookie.com/embed/${Movietrailer.results[0].key}}`}
-//               frameBorder="0"
-//               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-//               allowFullScreen
-//               title={title}
-//             ></iframe>
-//           </div>
-//         </DialogContent>
-//       </Dialog>
-//     </div>
-//   );
-// };
-
-// export default Youtubedialog;
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -45,6 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  
 } from "@/components/ui/dialog";
 import { GiPlayButton } from "react-icons/gi";
 type Youtubeprops = {
@@ -70,13 +35,14 @@ export function Youtubedialog({ Movietrailer, title, image }: Youtubeprops) {
             <GiPlayButton /> Play trailer
           </Button>
         </DialogTrigger>
+        <DialogTitle className="w-[1200px]"></DialogTitle>
 
         <DialogContent className="mt-[-100px] ml-[-400px] w-[1000px] h-[561px] ">
           <iframe
             width={1000}
             height={561}
             src={`https://www.youtube-nocookie.com/embed/${Movietrailer}`}
-            // src="https://www.youtube.com/watch?v=x7uLutVRBfI"
+         
 
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

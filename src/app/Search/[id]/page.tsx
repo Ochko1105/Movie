@@ -24,7 +24,7 @@ const SearchPage = async ({ params: { id } }: SearchPageProps) => {
         {" "}
         <div className="flex flex-wrap gap-4 w-[970px]">
           {movies.results.slice(0, 10).map((movie) => (
-            <div>
+            <div key={movie.id}>
               <Moviecard
                 title={movie.title}
                 Score={movie.vote_average}

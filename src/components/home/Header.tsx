@@ -6,6 +6,7 @@ import { IoIosSearch } from "react-icons/io";
 
 import Link from "next/link";
 import SearchInput from "./SearchInput";
+import { SearchSection } from "./Senseisearchinput";
 
 export async function Header() {
   return (
@@ -18,7 +19,7 @@ export async function Header() {
       </div>
       <div className="flex gap-3">
         <Genrepage></Genrepage>
-        <SearchInput />
+        <SearchSection></SearchSection>
       </div>
       <ModeToggle></ModeToggle>
     </div>

@@ -34,24 +34,22 @@ export async function Genrepage() {
               <div className="flex flex-wrap w-[577px] h-[333px] items-center gap-2">
                 {Genremoviesresponse.genres.map(
                   (genre: { id: string; name: string }) => (
-                    <Link
-                      key={genre.id}
-                      href={`/genre?id=${genre.id}&name=${
-                        genre.name
-                      }&page=${1}`}
-                    >
-                      <NavigationMenuLink className="border border-black ">
-                        <div className="flex items-center gap-2 ">
-                          <span className="text-[12px] font-semibold">
-                            {genre.name}
-                          </span>
-                          <FaChevronRight
-                            color="#09090B"
-                            className="w-[16px] h-[16px]"
-                          />
-                        </div>
-                      </NavigationMenuLink>
-                    </Link>
+                    <div key={genre.id}>  
+                    <NavigationMenuLink href={`/genre?id=${genre.id}&name=${
+                      genre.name
+                    }&page=${1}`} className="border border-black ">
+                      <div className="flex items-center gap-2 ">
+                        <span className="text-[12px] font-semibold">
+                          {genre.name}
+                        </span>
+                        <FaChevronRight
+                          color="#09090B"
+                          className="w-[16px] h-[16px]"
+                        />
+                      </div>
+                    </NavigationMenuLink>
+                  </div>
+                  
                   )
                 )}
               </div>

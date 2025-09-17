@@ -16,15 +16,13 @@ type MovieidPageProps = {
 const Movieid = async ({ params }: MovieidPageProps) => {
   const params2 = await params;
   const id = params2.id;
-  console.log("endehid", id);
+
   const Moviebyid: MovieType = await Getmoviesdescribtion(id);
   const Moviedirectorname: Directorname = await GetmoviesDirectorsname(id);
   const MorelikeThis: movieResponseType = await GetmoviesMorelikethis(id);
   const Movietrailer: movieResponseType = await GetmoviesTrailer(id);
 
-  console.log("Movietrailer", Movietrailer);
-
-  console.log("Morelikethis", MorelikeThis);
+ 
 
   return (
     <div>
@@ -41,7 +39,7 @@ const Movieid = async ({ params }: MovieidPageProps) => {
         crew={Moviedirectorname.crew}
         cast={Moviedirectorname.cast}
         vote_count={Moviebyid.vote_count}
-        Movietrailer={Movietrailer.results[3].key}
+        Movietrailer={Movietrailer.results[1].key}
         type={Movietrailer.results[0].name}
       ></Moviedescribecard>
 

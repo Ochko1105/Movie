@@ -5,6 +5,7 @@ import { PaginationDemo } from "@/components/home/Pagination";
 import { getGenremovies } from "../../../utilis/get-data";
 import { FaChevronRight } from "react-icons/fa";
 import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import {
   Pagination,
@@ -90,16 +91,7 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
         </div>
       </div>
 
-      <div className="mt-10 ml-165">
-        {" "}
-        <Pagination>
-          <PaginationContent>
-            {Array.from({ length: 5 }).map((_, index) => (
-              <PaginationItem></PaginationItem>
-            ))}
-          </PaginationContent>
-        </Pagination>
-      </div>
+      
     </div>
   );
 };
