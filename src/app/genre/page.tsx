@@ -1,29 +1,38 @@
 import { Moviecard } from "@/components/home/Moviecard";
 import { movieResponseType } from "../../../type";
-import { getMoviesbygenreid, getMoviesList } from "../../../utilis/get-data";
+import { getMoviesbygenreid } from "../../../utilis/get-data";
 import { PaginationDemo } from "@/components/home/Pagination";
 import { getGenremovies } from "../../../utilis/get-data";
 import { FaChevronRight } from "react-icons/fa";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Getmoviesdescribtion } from "../../../utilis/get-data";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 type GenrePageProps = {
-  searchParams: Promise<{ id: string; name: string }>;
+  searchParams: Promise<{ id: string; name: string; page: string }>;
 };
 
 const Genre = async ({ searchParams }: GenrePageProps) => {
   const params = await searchParams;
   const id = params.id;
   const name = params.name;
+  const index = params.page;
 
   const filteredMoviesResponse: movieResponseType = await getMoviesbygenreid(
     id,
-    "2"
+    index
   );
 
   const Genremoviesresponse = await getGenremovies();
-  console.log("gener", Genremoviesresponse);
+  console.log("gener", filteredMoviesResponse);
 
   return (
     <div>
@@ -83,7 +92,13 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
 
       <div className="mt-10 ml-165">
         {" "}
-        <PaginationDemo></PaginationDemo>
+        <Pagination>
+          <PaginationContent>
+            {Array.from({ length: 5 }).map((_, index) => (
+              <PaginationItem></PaginationItem>
+            ))}
+          </PaginationContent>
+        </Pagination>
       </div>
     </div>
   );

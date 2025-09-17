@@ -1,4 +1,3 @@
-import React from "react";
 import { Corosel } from "@/components/home/Corosel";
 
 import Upcoming from "@/components/home/Upcoming";

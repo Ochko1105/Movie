@@ -15,8 +15,8 @@ type MovieCardProps = {
   backdrop_path: string;
   genres: string[];
   overview: string;
-  crew: string;
-  cast: string;
+  crew: Crewtype;
+  cast: Crewtype;
   vote_count: number;
   Movietrailer: any;
   type: string;
@@ -26,7 +26,6 @@ export const Moviedescribecard = ({
   title,
   Score,
   Image,
-
   releasedate,
   runtime,
   backdrop_path,
@@ -36,7 +35,6 @@ export const Moviedescribecard = ({
   cast,
   vote_count,
   Movietrailer,
-
   type,
 }: MovieCardProps) => {
   return (
@@ -71,12 +69,7 @@ export const Moviedescribecard = ({
           height={450}
           width={290}
         />
-        {/* <img
-          className=" "
-          src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
-          height={428}
-          width={880}
-        ></img> */}
+
         <div>
           <Youtubedialog
             image={backdrop_path}
@@ -107,7 +100,7 @@ export const Moviedescribecard = ({
         <div className="flex  items-center gap-10">
           <div> Writers</div>
           <div className="text-[16px] font-normal flex gap-4">
-            {crew.slice(0, 3).map((crew) => {
+            {crew.slice(0, 3).map((crew: { job: string; name: string }) => {
               if (
                 crew.job === "Story" ||
                 crew.job === "Novel" ||

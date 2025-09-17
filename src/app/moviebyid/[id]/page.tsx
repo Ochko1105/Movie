@@ -1,21 +1,21 @@
 import React from "react";
-import { Directorname, movieResponseType, MovieType } from "../../../type";
+import { Directorname, movieResponseType, MovieType } from "../../../../type";
 import {
   Getmoviesdescribtion,
   GetmoviesDirectorsname,
   GetmoviesMorelikethis,
   GetmoviesTrailer,
-} from "../../../utilis/get-data";
+} from "../../../../utilis/get-data";
 import { Moviecard } from "@/components/home/Moviecard";
 import { Moviedescribecard } from "@/components/home/Moviedescribe";
 import { Button } from "@/components/ui/button";
 
 type MovieidPageProps = {
-  searchParams: Promise<{ id: string }>;
+  params: Promise<{ id: string }>;
 };
-const Movieid = async ({ searchParams }: MovieidPageProps) => {
-  const params = await searchParams;
-  const id = params.id;
+const Movieid = async ({ params }: MovieidPageProps) => {
+  const params2 = await params;
+  const id = params2.id;
   console.log("endehid", id);
   const Moviebyid: MovieType = await Getmoviesdescribtion(id);
   const Moviedirectorname: Directorname = await GetmoviesDirectorsname(id);

@@ -1,0 +1,20 @@
+<Form {...form}>
+  <form onSubmit="{form.handleSubmit(onSubmit)}">
+    <FormField control={form.control} name="input" render={({ field }) => (
+    <FormItem>
+      <FormControl>
+        <div className="flex items-center">
+          {" "}
+          <IoIosSearch className="ml-2" />
+          <Input
+            type="search"
+            placeholder="Search ..."
+            {...field}
+            className="w-[379px] h-[36px] border-0"
+          />
+        </div>
+      </FormControl>
+    </FormItem>
+    )} />
+  </form> </Form
+>;

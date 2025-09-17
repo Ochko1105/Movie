@@ -1,3 +1,5 @@
+import { string } from "zod";
+
 export type MovieType = {
   adult: boolean;
   backdrop_path: string;
@@ -35,7 +37,7 @@ export type CrewType = {
 };
 
 export type Directorname = {
-  cast: string;
+  cast: CrewType;
 
-  crew: string;
+  crew: CrewType;
 };

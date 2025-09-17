@@ -1,9 +1,11 @@
 import { ModeToggle } from "./Theme";
+
 import { Genrepage } from "./Genre";
 import { Input } from "@/components/ui/input";
 import { IoIosSearch } from "react-icons/io";
 
 import Link from "next/link";
+import SearchInput from "./SearchInput";
 
 export async function Header() {
   return (
@@ -16,17 +18,7 @@ export async function Header() {
       </div>
       <div className="flex gap-3">
         <Genrepage></Genrepage>
-        <div className="flex items-center gap-2 h-[36px] w-[355px] border rounded-md">
-          <IoIosSearch className="ml-2" />
-          <Link href={`/Searchbyid`}>
-            {" "}
-            <Input
-              type="search"
-              placeholder="Search ..."
-              className="w-[379px] h-[36px] border-0"
-            />
-          </Link>
-        </div>
+        <SearchInput />
       </div>
       <ModeToggle></ModeToggle>
     </div>
