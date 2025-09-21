@@ -1,29 +1,7 @@
 import { FaStar } from "react-icons/fa";
 
 import { Youtubedialog } from "./Youtubedialog";
-type Crewtype = {
-  name: string;
-  job: string;
-};
-type Genre={
-  name:string
-}
-type MovieCardProps = {
-  title: string;
-  Score: number;
-  Image: string;
-  id: number;
-  releasedate: string;
-  runtime: number;
-  backdrop_path: string;
-  genres: Genre[];
-  overview: string;
-  crew: Crewtype[];
-  cast: Crewtype[];
-  vote_count: number;
-  Movietrailer: any;
-  type: string;
-};
+import { MovieType } from "../../../type";
 
 export const Moviedescribecard = ({
   title,
@@ -38,8 +16,7 @@ export const Moviedescribecard = ({
   cast,
   vote_count,
   Movietrailer,
-  type,
-}: MovieCardProps) => {
+}: MovieType) => {
   return (
     <div className="w-[1068px] h-fit ml-42">
       {" "}
@@ -47,7 +24,7 @@ export const Moviedescribecard = ({
         <div>
           <div className="text-[36px] font-bold">{title}</div>
           <div>
-            {releasedate} PG {runtime} min
+            {releasedate} PG {Math.floor(runtime / 60)} h {runtime % 60} min
           </div>
         </div>
 
@@ -77,13 +54,15 @@ export const Moviedescribecard = ({
           <Youtubedialog
             image={backdrop_path}
             Movietrailer={Movietrailer}
-            title={type}
           ></Youtubedialog>
         </div>
       </div>
       <div className="flex gap-4 mt-10">
-        {genres.map((genre,index) => (
-          <div key={index} className="border w-[100px] rounded-md border-white text-center">
+        {genres.map((genre, index) => (
+          <div
+            key={index}
+            className="border w-[100px] rounded-md border-white text-center"
+          >
             {genre.name}
           </div>
         ))}
@@ -93,7 +72,7 @@ export const Moviedescribecard = ({
         <div className="flex  items-center gap-10">
           <div> Director</div>
           <div className="text-[16px] font-normal">
-            {crew.map((crew,index) => {
+            {crew.map((crew, index) => {
               if (crew.job === "Director") {
                 return <div key={index}>{crew.name}</div>;
               }
@@ -103,22 +82,24 @@ export const Moviedescribecard = ({
         <div className="flex  items-center gap-10">
           <div> Writers</div>
           <div className="text-[16px] font-normal flex gap-4">
-            {crew.slice(0, 3).map((crew: { job: string; name: string },index) => {
-              if (
-                crew.job === "Story" ||
-                crew.job === "Novel" ||
-                crew.job === "Original Story" ||
-                crew.job === "Producer"
-              ) {
-                return <div key={index}>{crew.name}</div>;
-              }
-            })}
+            {crew
+              .slice(0, 3)
+              .map((crew: { job: string; name: string }, index) => {
+                if (
+                  crew.job === "Story" ||
+                  crew.job === "Novel" ||
+                  crew.job === "Original Story" ||
+                  crew.job === "Producer"
+                ) {
+                  return <div key={index}>{crew.name}</div>;
+                }
+              })}
           </div>
         </div>
         <div className="flex  items-center gap-10">
           <div> Stars</div>
           <div className="text-[16px] font-normal flex  gap-4">
-            {cast.slice(0, 3).map((cast,index) => {
+            {cast.slice(0, 3).map((cast, index) => {
               return <div key={index}>{cast.name}</div>;
             })}
           </div>

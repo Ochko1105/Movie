@@ -15,7 +15,7 @@ type MovieCardProps = {
   title: string;
   Score: number;
   Image: string;
-  id: number;
+  id: string;
 };
 
 export const Moviecard = ({ title, Score, Image, id }: MovieCardProps) => {

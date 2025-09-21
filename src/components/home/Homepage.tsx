@@ -4,22 +4,21 @@ import Upcoming from "@/components/home/Upcoming";
 
 import TopRated from "@/components/home/TopRated";
 import Popular from "@/components/home/Popular";
-import { PaginationDemo } from "@/components/home/Pagination";
 
-import { getMoviesList } from "../../../utilis/get-data";
+import { getMoviesList, GetmoviesTrailer } from "../../../utilis/get-data";
 
-import { movieResponseType } from "../../../type";
+import { movieResponseType, MovieType } from "../../../type";
 
-const upcomingMovies: movieResponseType = await getMoviesList("now_playing");
-console.log("upcoming", upcomingMovies);
+const upcomingMovies: movieResponseType = await getMoviesList("now_playing", 1);
 
 const Homepage = () => {
+  console.log("uvfmlbd", upcomingMovies);
   return (
     <div>
       {" "}
       <div className="w-[1440px] flex flex-col ">
-        <div className="ml-30">
-          <Corosel movies={upcomingMovies.results}></Corosel>
+        <div className="ml-30 relative">
+          <Corosel movies={upcomingMovies}></Corosel>
         </div>
 
         <div>
@@ -30,9 +29,6 @@ const Homepage = () => {
         </div>
         <div>
           <TopRated slice1={0} slice2={10}></TopRated>
-        </div>
-        <div className="mt-10">
-          <PaginationDemo></PaginationDemo>
         </div>
       </div>
     </div>

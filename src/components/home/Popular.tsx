@@ -13,7 +13,7 @@ type Slicecount = {
 };
 
 export default async function Popular({ slice1, slice2 }: Slicecount) {
-  const upcomingMovies: movieResponseType = await getMoviesList("popular");
+  const upcomingMovies: movieResponseType = await getMoviesList("popular", 1);
 
   return (
     <div>
@@ -29,24 +29,15 @@ export default async function Popular({ slice1, slice2 }: Slicecount) {
       </div>
       <div className="ml-40 mt-10">
         <div className="flex flex-wrap gap-4">
-          {upcomingMovies.results
-            .slice(slice1, slice2)
-            .map(
-              (movie: {
-                title: string;
-                vote_average: number;
-                poster_path: string;
-                id: number;
-              }) => (
-                <Moviecard
-                  id={movie.id}
-                  key={movie.id}
-                  title={movie.title}
-                  Score={movie.vote_average}
-                  Image={movie.poster_path}
-                />
-              )
-            )}
+          {upcomingMovies.results.slice(slice1, slice2).map((movie) => (
+            <Moviecard
+              id={movie.id}
+              key={movie.id}
+              title={movie.title}
+              Score={movie.vote_average}
+              Image={movie.poster_path}
+            />
+          ))}
         </div>{" "}
       </div>
     </div>
