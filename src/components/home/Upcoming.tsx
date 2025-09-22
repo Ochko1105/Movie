@@ -14,7 +14,6 @@ type Slicecount = {
 
 export default async function Upcoming({ slice1, slice2 }: Slicecount) {
   const upcomingMovies: movieResponseType = await getMoviesList("upcoming", 1);
-  console.log("fkbbdknb", upcomingMovies);
 
   return (
     <div>

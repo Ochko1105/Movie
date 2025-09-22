@@ -40,6 +40,7 @@ export type Trailer = {
 export type CrewType = {
   job: string;
   name: string;
+  id: string;
 };
 
 export type Directorname = {

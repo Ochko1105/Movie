@@ -5,14 +5,13 @@ import Upcoming from "@/components/home/Upcoming";
 import TopRated from "@/components/home/TopRated";
 import Popular from "@/components/home/Popular";
 
-import { getMoviesList, GetmoviesTrailer } from "../../../utilis/get-data";
+import { getMoviesList } from "../../../utilis/get-data";
 
-import { movieResponseType, MovieType } from "../../../type";
+import { movieResponseType } from "../../../type";
 
 const upcomingMovies: movieResponseType = await getMoviesList("now_playing", 1);
 
 const Homepage = () => {
-  console.log("uvfmlbd", upcomingMovies);
   return (
     <div>
       {" "}

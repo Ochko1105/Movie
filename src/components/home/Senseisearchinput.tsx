@@ -87,9 +87,13 @@ export const SearchSection = () => {
             );
           })}
           <div className=" border flex justify-center rounded-md py-2">
-            <Link href={`/Search/${searchValue}`}>
-              See all results for "{searchValue}"
-            </Link>
+            {foundMovies?.results.length === 0 ? (
+              <Link href={`/Search/${searchValue}`}>Not results found </Link>
+            ) : (
+              <Link href={`/Search/${searchValue}`}>
+                See all results for "{searchValue}"
+              </Link>
+            )}
           </div>
         </PopoverContent>
       </Popover>

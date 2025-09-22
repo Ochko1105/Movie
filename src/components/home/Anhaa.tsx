@@ -29,7 +29,6 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
   );
 
   const howManyMovies: number = filteredMoviesResponse.totalPages;
-  console.log(howManyMovies);
 
   const url = `/genre?id=${id}&name=${name}`;
 

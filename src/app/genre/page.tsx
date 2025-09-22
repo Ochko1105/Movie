@@ -1,12 +1,11 @@
 import { Moviecard } from "@/components/home/Moviecard";
 import { movieResponseType } from "../../../type";
 import { getMoviesbygenreid } from "../../../utilis/get-data";
-import { PaginationDemo } from "@/components/home/Pagination";
+
 import { getGenremovies } from "../../../utilis/get-data";
 import { FaChevronRight } from "react-icons/fa";
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
 import {
   Pagination,
   PaginationContent,
@@ -35,8 +34,7 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
 
   const Genremoviesresponse = await getGenremovies();
   const Totalpage: number = filteredMoviesResponse.totalPages;
-  console.log("fbkdbkdfmbd", Totalpage);
-  console.log("gener", filteredMoviesResponse);
+
   const url = `/genre?id=${id}&name=${name}`;
 
   return (

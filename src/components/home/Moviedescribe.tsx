@@ -2,6 +2,8 @@ import { FaStar } from "react-icons/fa";
 
 import { Youtubedialog } from "./Youtubedialog";
 import { MovieType } from "../../../type";
+import Link from "next/link";
+import { number } from "zod";
 
 export const Moviedescribecard = ({
   title,
@@ -59,12 +61,15 @@ export const Moviedescribecard = ({
       </div>
       <div className="flex gap-4 mt-10">
         {genres.map((genre, index) => (
-          <div
-            key={index}
-            className="border w-[100px] rounded-md border-white text-center"
-          >
-            {genre.name}
-          </div>
+          <Link href={`/genre?id=${genre.id}&name=${genre.name}&page=${1}`}>
+            {" "}
+            <div
+              key={index}
+              className="border w-[100px] rounded-md border-white text-center"
+            >
+              {genre.name}
+            </div>
+          </Link>
         ))}
       </div>
       <div className="mt-10">{overview}</div>
