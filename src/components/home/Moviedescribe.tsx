@@ -20,7 +20,7 @@ export const Moviedescribecard = ({
   Movietrailer,
 }: MovieType) => {
   return (
-    <div className="w-[1068px] h-fit ml-42">
+    <div className="w-[1068px] h-fit ">
       {" "}
       <div className="flex  justify-between w-[1068px]">
         <div>
@@ -110,7 +110,6 @@ export const Moviedescribecard = ({
           </div>
         </div>
       </div>
-      <div></div>
     </div>
   );
 };

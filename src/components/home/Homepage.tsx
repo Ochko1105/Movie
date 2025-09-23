@@ -15,8 +15,8 @@ const Homepage = () => {
   return (
     <div>
       {" "}
-      <div className="w-[1440px] flex flex-col ">
-        <div className="ml-30 relative">
+      <div className="w-[1440px] mx-auto flex flex-col ">
+        <div className=" relative">
           <Corosel movies={upcomingMovies}></Corosel>
         </div>
 

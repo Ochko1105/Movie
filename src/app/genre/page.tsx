@@ -38,12 +38,10 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
   const url = `/genre?id=${id}&name=${name}`;
 
   return (
-    <div>
+    <div className="mx-auto w-[1440px]">
       <div className="flex gap-33">
-        <div className="text-4xl font-bold ml-30 mt-20 mb-10">
-          Search Filter
-        </div>
-        <div className="text-4xl font-bold ml-30 mt-20 mb-10">
+        <div className="text-4xl font-bold  mt-20 mb-10">Search Filter</div>
+        <div className="text-4xl font-bold  mt-20 mb-10">
           {" "}
           {filteredMoviesResponse.results.length} titles in {name}
         </div>
@@ -52,7 +50,7 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
 
       <div className="flex">
         {" "}
-        <div className="flex flex-wrap w-[313px] h-[200px] ml-30 gap-4 justify-start ">
+        <div className="flex flex-wrap w-[313px] h-[200px]  gap-4 justify-start ">
           <div className="pl-2  ">
             <div className="text-[24px] font-semibold">Genre</div>
             <div className="pb-5 pt-2 text-[16px]">

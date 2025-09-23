@@ -17,7 +17,7 @@ export default async function Upcoming({ slice1, slice2 }: Slicecount) {
 
   return (
     <div>
-      <div className="flex justify-between pl-30 pt-10">
+      <div className="flex justify-between ml-20  pt-10 mr-35">
         <div className="text-[24px] font-semibold">Upcoming</div>
         <Link href={`/Upcoming/page=${2}`}>
           {" "}
@@ -27,7 +27,7 @@ export default async function Upcoming({ slice1, slice2 }: Slicecount) {
           </Button>
         </Link>
       </div>
-      <div className="ml-40 mt-10">
+      <div className="ml-20 mt-10">
         <div className="flex flex-wrap gap-4">
           {upcomingMovies.results.slice(slice1, slice2).map((movie) => (
             <Moviecard

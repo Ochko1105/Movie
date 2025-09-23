@@ -18,6 +18,7 @@ import {
   SkeletonCard,
   SkeletonCardMoviedetails,
 } from "@/components/home/Homepageskeleton";
+import { FaChevronRight } from "react-icons/fa";
 
 type MovieidPageProps = {
   params: Promise<{ id: string }>;
@@ -34,7 +35,7 @@ const Movieid = async ({ params }: MovieidPageProps) => {
 
   return (
     <Suspense fallback={<SkeletonCardMoviedetails />}>
-      <div>
+      <div className="w-[1280px] mx-auto">
         <Moviedescribecard
           title={Moviebyid.title}
           Score={Moviebyid.vote_average}
@@ -61,12 +62,15 @@ const Movieid = async ({ params }: MovieidPageProps) => {
           type={""}
         ></Moviedescribecard>
 
-        <div className="flex justify-between mt-10 ml-42 w-[1200px]">
+        <div className="flex justify-between mt-10  w-[1280px]">
           {" "}
           <div className="text-4xl font-bold">More like this</div>{" "}
-          <Button>See more</Button>
+          <Button>
+            See more{" "}
+            <FaChevronRight color="black" className="w-[16px] h-[16px]" />
+          </Button>
         </div>
-        <div className="flex  gap-6 ml-42 mt-10 flex-wrap w-[1280px]">
+        <div className="flex  gap-6  mt-10 flex-wrap w-[1280px]">
           {" "}
           {MorelikeThis.results.slice(0, 5).map((movie) => (
             <Moviecard
