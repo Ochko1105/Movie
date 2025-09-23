@@ -36,7 +36,12 @@ export const SearchSection = () => {
 
   return (
     <div>
-      <Popover open={isOpen}>
+      <Popover
+        open={isOpen}
+        onOpenChange={() => {
+          setIsOpen(false);
+        }}
+      >
         <PopoverTrigger>
           <Input
             value={searchValue}
@@ -50,6 +55,7 @@ export const SearchSection = () => {
         <PopoverContent
           className="w-[537px] left-172 top-12 flex flex-col gap-[25px] "
           onOpenAutoFocus={(e) => e.preventDefault()}
+          onCloseAutoFocus={(e) => e.preventDefault()}
         >
           {foundMovies?.results.slice(0, 5).map((movie, index) => {
             return (

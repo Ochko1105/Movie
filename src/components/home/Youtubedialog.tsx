@@ -33,10 +33,10 @@ export function Youtubedialog({ Movietrailer, image }: Youtubeprops) {
         </DialogTrigger>
         <DialogTitle className="w-[1200px]"></DialogTitle>
 
-        <DialogContent className="mt-[-100px] ml-[-400px] w-[1000px] h-[561px] ">
+        <DialogContent className="mt-[-100px] ml-[-400px] w-[1400px] h-[561px] ">
           <iframe
-            width={1000}
-            height={561}
+            width={1400}
+            height={761}
             src={`https://www.youtube.com/embed/${Movietrailer}`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

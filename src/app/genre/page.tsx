@@ -36,14 +36,15 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
   const Totalpage: number = filteredMoviesResponse.totalPages;
 
   const url = `/genre?id=${id}&name=${name}`;
+  console.log("seadvjfjbnf", filteredMoviesResponse);
 
   return (
     <div className="mx-auto w-[1440px]">
       <div className="flex gap-33">
         <div className="text-4xl font-bold  mt-20 mb-10">Search Filter</div>
-        <div className="text-4xl font-bold  mt-20 mb-10">
+        <div className="text-4xl font-bold  mt-20 mb-10 ml-30">
           {" "}
-          {filteredMoviesResponse.results.length} titles in {name}
+          {filteredMoviesResponse.total_results} titles in {name}
         </div>
         <div></div>
       </div>

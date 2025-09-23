@@ -32,6 +32,7 @@ export type movieResponseType = {
   type: string;
   name: string;
   results: MovieType[];
+  total_results: number;
 };
 export type Trailer = {
   key: string;
