@@ -39,19 +39,18 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
   console.log("seadvjfjbnf", filteredMoviesResponse);
 
   return (
-    <div className="mx-auto w-[1440px]">
+    <div className="mx-auto sm:w-[1440px]">
       <div className="flex gap-33">
         <div className="text-4xl font-bold  mt-20 mb-10">Search Filter</div>
-        <div className="text-4xl font-bold  mt-20 mb-10 ml-30">
+        <div className="text-4xl font-bold  mt-20 mb-10 ml-30 sm:block hidden">
           {" "}
           {filteredMoviesResponse.total_results} titles in {name}
         </div>
-        <div></div>
       </div>
 
-      <div className="flex">
+      <div className="sm:flex">
         {" "}
-        <div className="flex flex-wrap w-[313px] h-[200px]  gap-4 justify-start ">
+        <div className="sm:flex flex-wrap w-[313px] h-[200px]  gap-4 justify-start ">
           <div className="pl-2  ">
             <div className="text-[24px] font-semibold">Genre</div>
             <div className="pb-5 pt-2 text-[16px]">
@@ -66,23 +65,37 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
                   key={genre.id}
                   href={`/genre?id=${genre.id}&name=${genre.name}&page=${1}`}
                 >
-                  <div className="border border-white rounded-md   ">
-                    <Badge className="flex items-center gap-2 py-2">
-                      <span className="text-[12px] font-semibold ">
-                        {genre.name}
-                      </span>
-                      <FaChevronRight
-                        color="#09090B"
-                        className="w-[16px] h-[16px]"
-                      />
-                    </Badge>
+                  <div>
+                    {" "}
+                    {genre.name === name ? (
+                      <Badge className="flex items-center bg-black text-white  border border-white gap-2 py-2">
+                        <span className="text-[12px] font-semibold ">
+                          {genre.name}
+                        </span>
+                        X
+                      </Badge>
+                    ) : (
+                      <Badge className="flex items-center gap-2 py-2 bg-foreground">
+                        <span className="text-[12px] font-semibold ">
+                          {genre.name}
+                        </span>
+                        <FaChevronRight
+                          color="#09090B"
+                          className="w-[16px] h-[16px]"
+                        />
+                      </Badge>
+                    )}
                   </div>
                 </Link>
               )
             )}
           </div>
         </div>{" "}
-        <div className="flex flex-wrap gap-3 w-[970px] ml-[140px]">
+        <div className="text-[20px] font-bold mt-50 sm:hidden">
+          {" "}
+          {filteredMoviesResponse.total_results} titles in {name}
+        </div>
+        <div className="flex flex-wrap gap-3 w-[375px] sm:mt-0 mt-10 sm:w-[970px] sm:ml-[140px]">
           {filteredMoviesResponse.results.slice(0, 12).map((movie) => (
             <Moviecard
               id={movie.id}
@@ -94,7 +107,7 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
           ))}
         </div>
       </div>
-      <Pagination className="flex justify-end mt-[32px]">
+      <Pagination className="flex sm:justify-end mt-10 sm:mt-[32px]">
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious href={`${url}&page=${Number(page) - 1}`} />

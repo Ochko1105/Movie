@@ -17,9 +17,9 @@ export default async function Popular({ slice1, slice2 }: Slicecount) {
 
   return (
     <div>
-      <div className="flex justify-between ml-20 mr-35 pt-10 ">
+      <div className="flex justify-between sm:ml-20 mx-5  pt-10 sm:mr-35">
         <div className="text-[24px] font-semibold">Popular</div>
-        <Link href="/Popular">
+        <Link href={`/Upcoming/page=${2}`}>
           {" "}
           <Button className="bg-white text-black ">
             See more{" "}
@@ -27,7 +27,7 @@ export default async function Popular({ slice1, slice2 }: Slicecount) {
           </Button>
         </Link>
       </div>
-      <div className="ml-20 mt-10">
+      <div className="sm:ml-20 mx-5 mt-10">
         <div className="flex flex-wrap gap-4">
           {upcomingMovies.results.slice(slice1, slice2).map((movie) => (
             <Moviecard

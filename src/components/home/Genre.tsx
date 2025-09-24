@@ -15,13 +15,14 @@ export async function Genrepage() {
   const Genremoviesresponse = await getGenremovies();
 
   return (
-    <div>
+    <div className=" sm:block">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="border-1">
+            <NavigationMenuTrigger className="hidden sm:block sm:border-1">
               Genre
             </NavigationMenuTrigger>
+            <NavigationMenuTrigger className="sm:hidden border-1"></NavigationMenuTrigger>
             <NavigationMenuContent>
               <div className="pl-2">
                 <div className="text-[24px] font-semibold">Genre</div>
@@ -30,7 +31,7 @@ export async function Genrepage() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap w-[577px] h-[333px] items-center gap-2">
+              <div className="flex flex-wrap  sm:w-[577px] sm:h-[333px] items-center gap-2 w-[355px] h-[363px]">
                 {Genremoviesresponse.genres.map(
                   (genre: { id: string; name: string }) => (
                     <div key={genre.id}>

@@ -62,7 +62,7 @@ const Movieid = async ({ params }: MovieidPageProps) => {
           type={""}
         ></Moviedescribecard>
 
-        <div className="flex justify-between mt-10  w-[1280px]">
+        <div className="flex justify-between mt-10  sm:w-[1280px] w-[375px] ">
           {" "}
           <div className="text-4xl font-bold">More like this</div>{" "}
           <Button>
@@ -70,7 +70,7 @@ const Movieid = async ({ params }: MovieidPageProps) => {
             <FaChevronRight color="black" className="w-[16px] h-[16px]" />
           </Button>
         </div>
-        <div className="flex  gap-6  mt-10 flex-wrap w-[1280px]">
+        <div className="flex  gap-6  mt-10 sm:flex-wrap w-[375px] ml-5 sm:w-[1280px] overflow-hidden">
           {" "}
           {MorelikeThis.results.slice(0, 5).map((movie) => (
             <Moviecard

@@ -55,7 +55,7 @@ export const Corosel = ({ movies }: MovieCarouselProps) => {
       </CarouselContent>
       <CarouselPrevious className="left-[20px]" />
       <CarouselNext className="right-[40px]" />
-      <div className="flex gap-2 items-center justify-center mt-10">
+      <div className="flex gap-2 items-center justify-center mt-10 w-[375px] sm:w-[1440px]">
         {Array.from({ length: count })
           .slice(0, 5)
           .map((_, index) => (
@@ -92,16 +92,14 @@ const MovieCarouselItem = ({ movie }: { movie: MovieType }) => {
   return (
     <CarouselItem
       key={movie.id}
-      className="text-white w-[1440px] h-[600px] relative"
+      className="text-white w-[375px] h-[710px] relative sm:relative sm:w-[1440px] sm:h-[600px]"
     >
       {" "}
       <img
-        className="absolute inset-0"
+        className="absolute inset-0 h-[246px] w-[375px] sm:w-[1440px] sm:h-[600px]"
         src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-        height={600}
-        width={1440}
       ></img>
-      <div className="pt-[178px] pl-[140px] absolute ">
+      <div className="pt-[274px] pl-[10px] w-[375px] sm:w-[1440px]  text-foreground  sm:absolute sm:pl-[140px] sm:pt-[178px]  ">
         <p>Now Playing :</p>
         <Link key={movie.id} href={`/moviebyid/${movie.id}`}>
           <p className="text-[36px] font-bold">{movie.title}</p>
@@ -111,7 +109,7 @@ const MovieCarouselItem = ({ movie }: { movie: MovieType }) => {
           {movie.vote_average}
           <span className="text-[16px] color-[#71717A]">/10</span>
         </p>
-        <p className="w-[500px] text-[12px] font-normal pt-[26px]">
+        <p className="sm:w-[500px] text-[12px] font-normal pt-[26px]">
           {movie.overview}
         </p>
 

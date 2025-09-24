@@ -22,15 +22,15 @@ export const Moviecard = ({ title, Score, Image, id }: MovieCardProps) => {
   return (
     <div>
       <Link href={`/moviebyid/${id}`}>
-        <Card className="h-[440px] w-[230px] bg-secondary p-0 overflow-hidden gap-2 px-0">
-          <CardContent className="w-[230px] h-[340px] px-0">
+        <Card className="sm:h-[440px] w-[158px] h-[309px] sm:w-[230px] bg-secondary p-0 overflow-hidden gap-2 px-0">
+          <CardContent className="w-[230px] sm:h-[340px] px-0">
             <img
               src={`https://image.tmdb.org/t/p/w500/${Image}`}
               alt=""
-              className="w-[230px] h-[340px] object-cover"
+              className="sm:w-[230px] w-[158px] h-[233px] sm:h-[340px] object-cover"
             />
           </CardContent>
-          <CardFooter className="flex flex-col items-start p-2">
+          <CardFooter className="flex flex-col items-start p-1 sm:p-2">
             <CardDescription className="flex gap-2">
               <span className="flex gap-2 items-center">
                 {" "}

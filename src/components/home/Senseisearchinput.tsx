@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/popover";
 import Link from "next/link";
 
-import { FaStar } from "react-icons/fa";
+import { FaSearch, FaStar } from "react-icons/fa";
 
 export const SearchSection = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -33,6 +33,11 @@ export const SearchSection = () => {
     }
     setFoundMovies(foundData);
   };
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
 
   return (
     <div>
@@ -43,17 +48,51 @@ export const SearchSection = () => {
         }}
       >
         <PopoverTrigger>
+          <div className="flex items-center gap-4 h-[59px] sm:hidden">
+            <Button
+              onClick={toggleVisibility}
+              className="bg-foreground sm:hidden"
+            >
+              <FaSearch></FaSearch>
+            </Button>
+            {isVisible ? (
+              <div className="flex gap-2">
+                {" "}
+                <Input
+                  value={searchValue}
+                  onChange={handleChange}
+                  className=" w-[180px] sm:visible"
+                  placeholder="Search.."
+                  type="search"
+                />
+                <Button
+                  onClick={toggleVisibility}
+                  className="bg-gray-500 sm:hidden"
+                >
+                  X
+                </Button>
+              </div>
+            ) : (
+              <Input
+                value={searchValue}
+                onChange={handleChange}
+                className="hidden sm:visible"
+                placeholder="Search.."
+                type="search"
+              />
+            )}
+          </div>
           <Input
             value={searchValue}
             onChange={handleChange}
-            className="pl-10"
+            className="hidden sm:block w-[180px] "
             placeholder="Search.."
             type="search"
           />
         </PopoverTrigger>
 
         <PopoverContent
-          className="w-[537px] left-172 top-12 flex flex-col gap-[25px] "
+          className="sm:w-[537px] left-172 top-12 flex flex-col gap-[25px] w-[375px]"
           onOpenAutoFocus={(e) => e.preventDefault()}
           onCloseAutoFocus={(e) => e.preventDefault()}
         >
@@ -62,8 +101,7 @@ export const SearchSection = () => {
               <div key={index} className="flex gap-4 ml-5  ">
                 <div className="mt-2">
                   <img
-                    height={100}
-                    width={67}
+                    className="h-[100px] w-[67px]   "
                     src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   />
                 </div>
@@ -82,7 +120,7 @@ export const SearchSection = () => {
                   </div>
                   <div className="mt-4">{movie.release_date}</div>
                 </div>
-                <div className="ml-[370px] mt-[71px] mb-[10px] absolute bg-transparent">
+                <div className="ml-52 mt-17.5 sm:ml-[370px] sm:mt-[71px] sm:mb-[10px] absolute bg-foreground rounded-md">
                   {" "}
                   <Link href={`/moviebyid/${movie.id}`}>
                     {" "}
