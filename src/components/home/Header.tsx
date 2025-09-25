@@ -31,7 +31,7 @@ export async function Header() {
             </h2>
           </div>
         </div>
-        <div className=" sm:hidden">
+        <div className="block sm:block">
           {" "}
           <div className="flex gap-3 items-center  ">
             <Genrepage></Genrepage>
