@@ -1,19 +1,20 @@
 import { Moviecard } from "@/components/home/Moviecard";
 import { getGenremovies, Getmoviebysearch } from "../../../../utilis/get-data";
 
-import { movieResponseType, MovieType } from "../../../../type";
+import { movieResponseType } from "../../../../type";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+
 import { FaChevronRight } from "react-icons/fa";
 import { Badge } from "@/components/ui/badge";
 
 interface SearchPageProps {
-  params: { id: string };
+  params: { id: string; page: string; name: string };
 }
 const SearchPage = async ({ params: { id } }: SearchPageProps) => {
   const TermToUse = decodeURI(id);
 
   const movies: movieResponseType = await Getmoviebysearch(TermToUse);
+
   const Genremoviesresponse = await getGenremovies();
 
   return (
@@ -41,7 +42,7 @@ const SearchPage = async ({ params: { id } }: SearchPageProps) => {
                   <div> No results found</div>
                 </div>
               )}
-              {movies.results.slice(0, 10).map((movie) => (
+              {movies.results.map((movie) => (
                 <div key={movie.id}>
                   <Moviecard
                     title={movie.title}
@@ -89,7 +90,7 @@ const SearchPage = async ({ params: { id } }: SearchPageProps) => {
               (genre: { id: string; name: string }) => (
                 <Link
                   key={genre.id}
-                  href={`/genre?id=${genre.id}&name=${genre.name}&page=${1}`}
+                  href={`/Search/${TermToUse}&name=${genre.id}`}
                 >
                   <div className="border border-white rounded-md   ">
                     <Badge className="flex items-center gap-2 ">

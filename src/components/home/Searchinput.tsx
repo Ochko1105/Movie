@@ -73,13 +73,13 @@ export const SearchSection = () => {
                 </Button>
               </div>
             ) : (
-              <Input
-                value={searchValue}
-                onChange={handleChange}
-                className="hidden sm:visible"
-                placeholder="Search.."
-                type="search"
-              />
+              <div className="flex gap-2">
+                {" "}
+                <img src="/film.png" alt="" height={16} width={16} />
+                <h2 className="text-base font-bold leading-4 text-indigo-700">
+                  <Link href="/">Movie Z</Link>
+                </h2>
+              </div>
             )}
           </div>
           <Input

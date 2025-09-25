@@ -63,12 +63,12 @@ export const Moviedescribecard = ({
       <div className="sm:block hidden">
         <div className="flex gap-4 mt-10 ">
           {genres.map((genre, index) => (
-            <Link href={`/genre?id=${genre.id}&name=${genre.name}&page=${1}`}>
+            <Link
+              key={index}
+              href={`/genre?id=${genre.id}&name=${genre.name}&page=${1}`}
+            >
               {" "}
-              <div
-                key={index}
-                className="border w-[100px] rounded-md border-white text-center"
-              >
+              <div className="border w-[100px] rounded-md border-white text-center">
                 {genre.name}
               </div>
             </Link>

@@ -7,18 +7,47 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+type Paginationprops = {
+  page: string;
+  currentUrl: string;
+};
 
-export function PaginationDemo() {
+export function Paginationcomponent({ page, currentUrl }: Paginationprops) {
   return (
-    <Pagination>
+    <Pagination className="mt-10">
       <PaginationContent>
+        {page !== "1" && (
+          <>
+            <PaginationItem>
+              <PaginationPrevious
+                href={`${currentUrl}page=${Number(page) - 1}`}
+              />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href={`${currentUrl}page=${Number(page) - 1}`}>
+                {Number(page) - 1}
+              </PaginationLink>
+            </PaginationItem>
+          </>
+        )}
+
         <PaginationItem>
-          <PaginationPrevious href="#" />
+          <PaginationLink isActive href="#">
+            {page}
+          </PaginationLink>
+        </PaginationItem>
+
+        <PaginationItem>
+          <PaginationLink href={`${currentUrl}page=${Number(page) + 1}`}>
+            {Number(page) + 1}
+          </PaginationLink>
+        </PaginationItem>
+
+        <PaginationItem>
+          <PaginationEllipsis />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#" isActive>
-            1
-          </PaginationLink>
+          <PaginationNext href={`${currentUrl}page=${Number(page) + 1}`} />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

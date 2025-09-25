@@ -1,4 +1,4 @@
-export const getMoviesList = async (listName: string, page: number) => {
+export const getMoviesList = async (listName: string, page: string | "1") => {
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/${listName}?language=en-US&page=${page}`,
     {
@@ -27,7 +27,7 @@ export const getGenremovies = async () => {
   const data = await res.json();
   return data;
 };
-export const getMoviesbygenreid = async (genreIds: string, page: number) => {
+export const getMoviesbygenreid = async (genreIds: string, page: string) => {
   const res = await fetch(
     `https://api.themoviedb.org/3/discover/movie?language=en&with_genres=${genreIds}&page=${page}`,
     {
@@ -84,9 +84,13 @@ export const GetmoviesDirectorsname = async (id: string) => {
   return data;
 };
 
-export const GetmoviesMorelikethis = async (id: string) => {
+export const GetmoviesMorelikethis = async (
+  id: string,
+  page: string | "1",
+  title: string
+) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`,
+    `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=${page}&title=${title}`,
     {
       method: "GET",
       headers: {
