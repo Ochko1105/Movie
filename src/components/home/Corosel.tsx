@@ -99,7 +99,7 @@ const MovieCarouselItem = ({ movie }: { movie: MovieType }) => {
         className="absolute inset-0 h-[246px] w-[375px] sm:w-[1440px] sm:h-[600px]"
         src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
       ></img>
-      <div className="pt-[274px] pl-[10px] w-[375px] sm:w-[1440px]  text-foreground  sm:absolute sm:pl-[140px] sm:pt-[178px]  ">
+      <div className="pt-[274px]  w-[375px] sm:w-[1440px]  text-foreground  sm:absolute sm:pl-[140px] sm:pt-[178px]  ">
         <p>Now Playing :</p>
         <Link key={movie.id} href={`/moviebyid/${movie.id}`}>
           <p className="text-[36px] font-bold">{movie.title}</p>

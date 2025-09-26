@@ -15,6 +15,7 @@ import {
 import Link from "next/link";
 
 import { FaSearch, FaStar } from "react-icons/fa";
+import { Badge } from "lucide-react";
 
 export const SearchSection = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -49,12 +50,12 @@ export const SearchSection = () => {
       >
         <PopoverTrigger>
           <div className="flex items-center gap-4 h-[59px] sm:hidden">
-            <Button
+            <Badge
               onClick={toggleVisibility}
               className="bg-foreground sm:hidden"
             >
               <FaSearch></FaSearch>
-            </Button>
+            </Badge>
             {isVisible ? (
               <div className="flex gap-2">
                 {" "}
@@ -65,12 +66,12 @@ export const SearchSection = () => {
                   placeholder="Search.."
                   type="search"
                 />
-                <Button
+                <Badge
                   onClick={toggleVisibility}
                   className="bg-gray-500 sm:hidden"
                 >
                   X
-                </Button>
+                </Badge>
               </div>
             ) : (
               <div className="flex gap-2">

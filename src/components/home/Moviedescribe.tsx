@@ -91,7 +91,10 @@ export const Moviedescribecard = ({
           {" "}
           <div className="flex gap-4  w-[201px] flex-wrap">
             {genres.map((genre, index) => (
-              <Link href={`/genre?id=${genre.id}&name=${genre.name}&page=${1}`}>
+              <Link
+                href={`/genre?id=${genre.id}&name=${genre.name}&page=${1}`}
+                key={index}
+              >
                 {" "}
                 <Badge
                   key={index}
