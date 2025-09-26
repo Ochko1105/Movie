@@ -5,19 +5,8 @@ import { Genrepage } from "./Genre";
 import Link from "next/link";
 
 import { SearchSection } from "./Searchinput";
-import { getGenremovies } from "../../../utilis/get-data";
-import { MobileSearch } from "./Mobilesearch";
 
 export async function Header() {
-  type GenreResponseType = {
-    genres: GenreType[];
-  };
-  type GenreType = {
-    id: number;
-    name: string;
-  };
-
-  const genresResponse: GenreResponseType = await getGenremovies();
   return (
     <div className="w-[375px] mx-auto sm:w-[1440px]">
       <div className="flex  mx-auto justify-between gap-2 items-center h-[59px] sm:h-[102px]">
@@ -31,7 +20,7 @@ export async function Header() {
             </h2>
           </div>
         </div>
-        <div className="block sm:block">
+        <div className=" sm:block">
           {" "}
           <div className="flex gap-3 items-center  ">
             <Genrepage></Genrepage>

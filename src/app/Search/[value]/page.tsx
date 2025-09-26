@@ -1,21 +1,41 @@
 import { Moviecard } from "@/components/home/Moviecard";
 import { getGenremovies, Getmoviebysearch } from "../../../../utilis/get-data";
 
-import { movieResponseType } from "../../../../type";
+import { movieResponseType, MovieType } from "../../../../type";
 import Link from "next/link";
 
 import { FaChevronRight } from "react-icons/fa";
 import { Badge } from "@/components/ui/badge";
+import { Paginationcomponent } from "@/components/home/Pagination";
+import { Button } from "@/components/ui/button";
 
-interface SearchPageProps {
-  params: { id: string; page: string; name: string };
-}
-const SearchPage = async ({ params: { id } }: SearchPageProps) => {
-  const TermToUse = decodeURI(id);
+type SearchPageProps = {
+  params: Promise<{ value: string }>;
+  searchParams: Promise<{ id: string; name: string }>;
+};
+type genreResponsiveType = {
+  genres: genretype[];
+};
+type genretype = {
+  name: string;
+  id: string;
+};
+
+const SearchPage = async ({ params, searchParams }: SearchPageProps) => {
+  const Dynamicroute = await params;
+  const TermToUse = Dynamicroute.value;
+  const Selectedgenreid = (await searchParams).id;
+  const name = (await searchParams).name;
 
   const movies: movieResponseType = await Getmoviebysearch(TermToUse);
 
-  const Genremoviesresponse = await getGenremovies();
+  const Genremoviesresponse: genreResponsiveType = await getGenremovies();
+  const FilteredSearchMovies =
+    Selectedgenreid != undefined
+      ? movies.results.filter((movie) =>
+          movie.genre_ids.toString().includes(Selectedgenreid)
+        )
+      : movies.results;
 
   return (
     <div className="h-fit mx-auto w-[375px] sm:w-[1280px] sm:mt-20 ">
@@ -30,7 +50,8 @@ const SearchPage = async ({ params: { id } }: SearchPageProps) => {
         <div>
           {" "}
           <div className="text-foreground text-[20px] font-bold sm:text-2xl sm:mt-10 mb-10">
-            {movies.results.length} results for "{TermToUse}"
+            {FilteredSearchMovies.length} results for "{TermToUse}" and genre ni
+            : "{name ? name : "All type Genre"}"
           </div>
           <div className="sm:block hidden">
             {" "}
@@ -42,7 +63,7 @@ const SearchPage = async ({ params: { id } }: SearchPageProps) => {
                   <div> No results found</div>
                 </div>
               )}
-              {movies.results.map((movie) => (
+              {FilteredSearchMovies?.map((movie) => (
                 <div key={movie.id}>
                   <Moviecard
                     title={movie.title}
@@ -52,6 +73,10 @@ const SearchPage = async ({ params: { id } }: SearchPageProps) => {
                   ></Moviecard>
                 </div>
               ))}
+              <Paginationcomponent
+                currentUrl={`/Search/${TermToUse}?id=${Selectedgenreid}&name=${name}&`}
+                page="1"
+              ></Paginationcomponent>
             </div>
           </div>
           <div className="sm:hidden block">
@@ -64,7 +89,7 @@ const SearchPage = async ({ params: { id } }: SearchPageProps) => {
                   <div> No results found</div>
                 </div>
               )}
-              {movies.results.slice(0, 5).map((movie) => (
+              {FilteredSearchMovies?.slice(0, 5).map((movie) => (
                 <div key={movie.id}>
                   <Moviecard
                     title={movie.title}
@@ -84,16 +109,25 @@ const SearchPage = async ({ params: { id } }: SearchPageProps) => {
               See lists of movies by genre
             </div>
           </div>
-          <div className="flex  flex-wrap gap-4 sm:w-[387px] ">
+          <div className="flex mt-10  flex-wrap gap-4 sm:w-[387px] ">
             {" "}
             {Genremoviesresponse.genres.map(
               (genre: { id: string; name: string }) => (
                 <Link
                   key={genre.id}
-                  href={`/Search/${TermToUse}&name=${genre.id}`}
+                  href={`/Search/${TermToUse}?id=${genre.id}&name=${genre.name}`}
                 >
-                  <div className="border border-white rounded-md   ">
-                    <Badge className="flex items-center gap-2 ">
+                  {genre.name === name ? (
+                    <Badge className="flex items-center bg-black text-white  border border-whitegap-2 py-2">
+                      <span className="text-[12px] font-semibold ">
+                        {genre.name}
+                      </span>
+                      <Link href={`/Search/${TermToUse}`}>
+                        <Badge>X</Badge>
+                      </Link>
+                    </Badge>
+                  ) : (
+                    <Badge className="flex items-center gap-2 py-2 bg-foreground">
                       <span className="text-[12px] font-semibold ">
                         {genre.name}
                       </span>
@@ -102,12 +136,12 @@ const SearchPage = async ({ params: { id } }: SearchPageProps) => {
                         className="w-[16px] h-[16px]"
                       />
                     </Badge>
-                  </div>
+                  )}
                 </Link>
               )
             )}
           </div>
-        </div>{" "}
+        </div>
       </div>
     </div>
   );

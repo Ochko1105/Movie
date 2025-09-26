@@ -19,25 +19,27 @@ const MorePage = async ({ searchParams }: MorePageProps) => {
   const currentUrl = `/Upcoming?title=${title}&name=${name}&`;
   return (
     <>
-      <div className="text-3xl font-bold ml-30 mb-10 text-foreground">
-        {name}
+      <div className="sm:w-[1200px] mx-auto">
+        {" "}
+        <div className="text-3xl font-bold mx-auto mb-10 text-foreground sm:w-[1440px]">
+          {name}
+        </div>
+        <div className="flex gap-4 flex-wrap sm:w-[1440px]  mx-auto">
+          {moviesRes.results.slice(0, 10).map((movie) => (
+            <Moviecard
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              Score={movie.vote_average}
+              Image={movie.poster_path}
+            />
+          ))}
+        </div>
+        <Paginationcomponent
+          page={page}
+          currentUrl={currentUrl}
+        ></Paginationcomponent>
       </div>
-      <div className="flex gap-4 flex-wrap sm:w-[1440px] ml-50 mx-auto">
-        {moviesRes.results.slice(0, 10).map((movie) => (
-          <Moviecard
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            Score={movie.vote_average}
-            Image={movie.poster_path}
-          />
-        ))}
-      </div>
-
-      <Paginationcomponent
-        page={page}
-        currentUrl={currentUrl}
-      ></Paginationcomponent>
     </>
   );
 };
