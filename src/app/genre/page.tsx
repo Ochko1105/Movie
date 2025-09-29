@@ -27,7 +27,6 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
   const Genremoviesresponse = await getGenremovies();
 
   const url = `/genre?id=${id}&name=${name}&`;
-  console.log("seadvjfjbnf", filteredMoviesResponse);
 
   return (
     <div className="mx-auto sm:w-[1440px]">

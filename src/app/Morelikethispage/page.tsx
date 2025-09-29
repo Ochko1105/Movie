@@ -2,15 +2,6 @@ import { Moviecard } from "@/components/home/Moviecard";
 
 import { movieResponseType } from "../../../type";
 
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
 import { GetmoviesMorelikethis } from "../../../utilis/get-data";
 import { Paginationcomponent } from "@/components/home/Pagination";
 
@@ -19,8 +10,6 @@ type MorePageProps = {
 };
 
 const MorePage = async ({ searchParams }: MorePageProps) => {
-  // https://localhost:3000/seeMore/upcoming?page=1
-
   const searchQuery = await searchParams;
   const id = searchQuery.id;
   const page = searchQuery.page || "1";
@@ -31,7 +20,6 @@ const MorePage = async ({ searchParams }: MorePageProps) => {
     page,
     title
   );
-  // /more?title=upcoming&page=3
 
   const currentUrl = `/Morelikethispage?id=${id}&title=${title}&`;
 

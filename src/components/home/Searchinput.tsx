@@ -15,7 +15,7 @@ import {
 import Link from "next/link";
 
 import { FaSearch, FaStar } from "react-icons/fa";
-import { Badge } from "lucide-react";
+import { Badge } from "../ui/badge";
 
 export const SearchSection = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -52,7 +52,7 @@ export const SearchSection = () => {
           <div className="flex items-center gap-4 h-[59px] sm:hidden">
             <Badge
               onClick={toggleVisibility}
-              className="bg-foreground sm:hidden"
+              className="bg-foreground sm:hidden py-2 px-3"
             >
               <FaSearch></FaSearch>
             </Badge>
@@ -68,7 +68,7 @@ export const SearchSection = () => {
                 />
                 <Badge
                   onClick={toggleVisibility}
-                  className="bg-gray-500 sm:hidden"
+                  className="bg-gray-500 sm:hidden px-3"
                 >
                   X
                 </Badge>

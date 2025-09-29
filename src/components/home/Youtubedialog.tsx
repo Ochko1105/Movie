@@ -1,11 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
@@ -23,32 +19,35 @@ export function Youtubedialog({ Movietrailer, image }: Youtubeprops) {
         src={`https://image.tmdb.org/t/p/original/${image}`}
         className="absolute inset-0 object-cover sm:h-[430px] sm:w-[880px] w-[375px] h-[211px]"
       ></img>{" "}
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="outline" className="absolute rounded-full">
-            <GiPlayButton /> Play trailer
-          </Button>
-        </DialogTrigger>
+      <div>
+        {" "}
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline" className="absolute rounded-full">
+              <GiPlayButton /> Play trailer
+            </Button>
+          </DialogTrigger>
 
-        <DialogTitle className="w-[1200px]"></DialogTitle>
+          <DialogTitle className="w-[1200px]"></DialogTitle>
 
-        <DialogContent className="mt-[-100px] ml-[-400px] w-[1400px] h-[561px] ">
-          <iframe
-            src={`https://www.youtube.com/embed/${Movietrailer}`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="absolute inset-0 block sm:w-[1400px] sm:h-[761px]  "
-          ></iframe>
-        </DialogContent>
-        <DialogContent className="sm:hidden ">
-          <iframe
-            src={`https://www.youtube.com/embed/${Movietrailer}`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="absolute inset-0 block sm:w-[1400px] sm:h-[761px] w-[375px] h-[500px] "
-          ></iframe>
-        </DialogContent>
-      </Dialog>
+          <DialogContent className="mt-[-100px] ml-[-400px] w-[1400px] h-[561px]">
+            <iframe
+              src={`https://www.youtube.com/embed/${Movietrailer}`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 block sm:w-[1400px] sm:h-[761px]  "
+            ></iframe>
+          </DialogContent>
+          <DialogContent className="sm:hidden block ">
+            <iframe
+              src={`https://www.youtube.com/embed/${Movietrailer}`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 block sm:w-[1400px] sm:h-[761px] w-[375px] h-[500px] "
+            ></iframe>
+          </DialogContent>
+        </Dialog>
+      </div>
     </div>
   );
 }
