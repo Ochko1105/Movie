@@ -24,6 +24,15 @@ import Link from "next/link";
 type MovieidPageProps = {
   params: Promise<{ id: string }>;
 };
+export const generateMetadata = async ({ params }: MovieidPageProps) => {
+  const dynamicParams = await params;
+  const id = dynamicParams.id;
+  const movieDetailData = await Getmoviesdescribtion(id);
+
+  return {
+    title: `Movie App | ${movieDetailData.title}`,
+  };
+};
 const Movieid = async ({ params }: MovieidPageProps) => {
   const params2 = await params;
   const id = params2.id;
